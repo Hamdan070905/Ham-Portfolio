@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { MapPin, GraduationCap, Briefcase } from "lucide-react";
-import profilePhoto from "@/assets/profile-photo.jpg";
+
+// Profile photo - replace with your actual photo at src/assets/profile-photo.jpg
+const profilePhoto = "/placeholder.svg";
 
 const AboutSection = () => {
   const stats = [
