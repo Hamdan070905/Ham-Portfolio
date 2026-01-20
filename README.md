@@ -1,54 +1,71 @@
-# Welcome to your Lovable project
+# Ham Portfolio
 
-## Project info
+A modern, responsive portfolio website built with React, TypeScript, and Tailwind CSS.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## 🚀 Quick Start - How to Run Your Portfolio Locally
 
-## How can I edit this code?
+**Prerequisites:**
+- Node.js (v18 or higher) - [Download here](https://nodejs.org/)
+- npm or bun (package manager)
 
-There are several ways of editing your application.
+**Steps to Run:**
 
-**Use Lovable**
+1. **Install Dependencies** (if you haven't already):
+   ```bash
+   npm install
+   ```
+   or if you're using bun:
+   ```bash
+   bun install
+   ```
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+2. **Start Development Server:**
+   ```bash
+   npm run dev
+   ```
+   or with bun:
+   ```bash
+   bun run dev
+   ```
 
-Changes made via Lovable will be committed automatically to this repo.
+3. **View Your Portfolio:**
+   - Open your browser and go to: `http://localhost:5173`
+   - The page will automatically reload when you make changes to your code!
 
-**Use your preferred IDE**
+4. **Build for Production:**
+   ```bash
+   npm run build
+   ```
+   This creates an optimized production build in the `dist` folder.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+5. **Preview Production Build:**
+   ```bash
+   npm run preview
+   ```
+   This lets you test how your portfolio will look after deployment.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 📝 How to Edit Your Portfolio (FREE Methods)
 
-Follow these steps:
+**Since Lovable limit is reached, use these FREE tools:**
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+**Option 1: VS Code (Recommended - Best Editing Experience)**
+1. Install VS Code: https://code.visualstudio.com/ (FREE)
+2. Open this project folder in VS Code
+3. Edit any file in `src/components/` folder
+4. Run `npm run dev` to see changes live
+5. Push to GitHub and deploy (see deployment section below)
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+**Option 2: Edit Directly on GitHub (No Installation Needed)**
+- Go to your GitHub repository
+- Click the "Edit" button (pencil icon) on any file
+- Make changes and commit
+- Deploy using one of the free hosting options below
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+**Option 3: GitHub Codespaces (Free Browser-Based Editor)**
+- Go to your GitHub repository
+- Click "Code" → "Codespaces" → "Create codespace"
+- Edit files in the browser
+- Commit and push changes
 
 ## What technologies are used for this project?
 
@@ -60,9 +77,57 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
+## 🌐 How to Deploy Your Portfolio (FREE Hosting Options)
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+### **Option 1: GitHub Pages (Already Configured!)**
+```bash
+npm run deploy
+```
+Your portfolio will be live at: `https://hamdan070905.github.io/Ham-Portfolio`
+
+**To update after changes:**
+```bash
+git add .
+git commit -m "Update portfolio"
+git push
+npm run deploy
+```
+
+### **Option 2: Vercel (FREE - Auto-Deploy - Recommended!)**
+1. Go to https://vercel.com (Sign up with GitHub - FREE)
+2. Click **"Add New Project"**
+3. Import your `Ham-Portfolio` repository
+4. Click **"Deploy"**
+5. **Done!** Your portfolio is live with `.vercel.app` URL
+6. **Auto-updates:** Every `git push` automatically deploys!
+
+### **Option 3: Netlify (FREE - Also Auto-Deploy)**
+1. Go to https://netlify.com (Sign up with GitHub - FREE)
+2. Click **"Add new site" → "Import an existing project"**
+3. Select your `Ham-Portfolio` repository
+4. Build settings:
+   - Build command: `npm run build`
+   - Publish directory: `dist`
+5. Click **"Deploy site"**
+6. **Auto-updates** when you push to GitHub!
+
+**📖 Detailed Guide:** See `FREE_EDITING_GUIDE.md` for complete instructions!
+
+## ⚠️ Troubleshooting
+
+**Error: "Cannot find module '@tanstack/react-query'" or similar**
+- Run `npm install` again to install all dependencies
+- Make sure you've installed Node.js properly
+
+**Portfolio changes not appearing on live site?**
+- Make sure you've pushed changes to GitHub: `git push`
+- Go to Lovable and click **Share → Publish** again
+- Wait a few minutes for deployment to complete
+
+**Development server won't start?**
+- Delete `node_modules` folder and `package-lock.json`
+- Run `npm install` again
+- Try `npm run dev` again
 
 ## Can I connect a custom domain to my Lovable project?
 

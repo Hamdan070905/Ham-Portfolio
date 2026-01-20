@@ -1,9 +1,13 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Linkedin, Github, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Github, Send, Loader2 } from "lucide-react";
 import { Button } from "./ui/button";
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
+import { useToast } from "@/hooks/use-toast";
 
 const ContactSection = () => {
+  const { toast } = useToast();
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -11,11 +15,59 @@ const ContactSection = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // EmailJS Configuration
+  const PUBLIC_KEY = "QAY2A2ASJnnsjgF2C";
+  const SERVICE_ID = "service_q52x3zd";
+  const TEMPLATE_ID = "template_vwz1czq";
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    const mailtoLink = `mailto:mohammedhamdanj07@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
-    window.location.href = mailtoLink;
+    setIsLoading(true);
+
+    try {
+      // Prepare template parameters - these should match your EmailJS template variables
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_email: "mohammedhamdanj07@gmail.com",
+        // Add any other variables that your EmailJS template uses
+      };
+
+      // Send email using EmailJS (pass public key as 4th parameter)
+      const response = await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        templateParams,
+        PUBLIC_KEY
+      );
+
+      // Success
+      if (response.status === 200 || response.text === "OK") {
+        toast({
+          title: "Message Sent Successfully! ✨",
+          description: "Thank you for contacting me. I'll get back to you soon.",
+        });
+
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+      }
+    } catch (error: any) {
+      console.error("EmailJS Error:", error);
+      toast({
+        title: "Failed to Send Message",
+        description: error?.text || "Please try again later or contact me directly via email.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const contactInfo = [
@@ -28,8 +80,8 @@ const ContactSection = () => {
     {
       icon: <Phone size={24} />,
       label: "Phone",
-      value: "+91 9791281627",
-      href: "tel:+919791281627",
+      value: "+91 9150648608",
+      href: "tel:+919150648608",
     },
     {
       icon: <MapPin size={24} />,
@@ -179,8 +231,23 @@ const ContactSection = () => {
                   required
                 />
               </div>
-              <Button type="submit" variant="hero" size="lg" className="w-full">
-                Send Message <Send className="ml-2" size={18} />
+              <Button 
+                type="submit" 
+                variant="hero" 
+                size="lg" 
+                className="w-full" 
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <>
+                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    Send Message <Send className="ml-2" size={18} />
+                  </>
+                )}
               </Button>
             </form>
           </motion.div>

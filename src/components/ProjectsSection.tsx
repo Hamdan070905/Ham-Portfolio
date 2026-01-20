@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Github, Bot, Eye, FileText, Brain, MessageCircle, Shield } from "lucide-react";
-import { Button } from "./ui/button";
+import { Github, Bot, Eye, FileText, Brain, MessageCircle, Shield } from "lucide-react";
 
 const ProjectsSection = () => {
   const majorProjects = [
@@ -108,12 +107,13 @@ const ProjectsSection = () => {
 
               {/* Links */}
               <div className="flex gap-3 pt-4 border-t border-border">
-                <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-neon-cyan">
-                  <Github size={16} className="mr-1" /> Code
-                </Button>
-                <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-neon-purple">
-                  <ExternalLink size={16} className="mr-1" /> Demo
-                </Button>
+                <button
+                  type="button"
+                  aria-label="View code on GitHub"
+                  className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-border bg-secondary/20 text-muted-foreground hover:text-neon-cyan hover:border-neon-cyan/50 transition-colors"
+                >
+                  <Github size={18} />
+                </button>
               </div>
             </motion.div>
           ))}

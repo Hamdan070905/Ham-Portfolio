@@ -6,8 +6,15 @@ const ExperienceSection = () => {
     {
       degree: "B.Tech – Artificial Intelligence & Data Science",
       institution: "B.S. Abdur Rahman Crescent Institute of Science and Technology",
-      location: "Chennai, Tamil Nadu",
+      location: "Chennai, India",
       period: "2023 – 2027",
+    },
+    {
+      degree: "Class XII (State Board)",
+      institution: "Adarsh Matriculation Higher Secondary School",
+      location: "Vaniyambadi, India",
+      period: "",
+      subjects: "Mathematics, Physics, Chemistry, Computer Science, English",
     },
   ];
 
@@ -21,6 +28,11 @@ const ExperienceSection = () => {
       title: "Machine Learning Intern",
       company: "CodeAlpha Pvt. Ltd.",
       description: "Built and deployed ML models for real-world applications, focusing on predictive analytics.",
+    },
+    {
+      title: "ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING ",
+      company: "Elevate Labs Pvt Ltd.",
+      description: "Built the AI model for real-world applications, focusing on predictive analytics."
     },
     {
       title: "Data Science Intern",
@@ -84,6 +96,11 @@ const ExperienceSection = () => {
                     <h4 className="font-display text-xl font-semibold mb-2">{edu.degree}</h4>
                     <p className="text-muted-foreground">{edu.institution}</p>
                     <p className="text-sm text-muted-foreground mt-1">{edu.location}</p>
+                    {"subjects" in edu && edu.subjects ? (
+                      <p className="text-sm text-muted-foreground mt-3">
+                        <span className="text-foreground/80 font-medium">Subjects:</span> {edu.subjects}
+                      </p>
+                    ) : null}
                   </div>
                 </motion.div>
               ))}

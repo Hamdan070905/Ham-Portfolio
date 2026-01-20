@@ -1,18 +1,16 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
+import react from "@vitejs/plugin-react";
 import path from "path";
-import { componentTagger } from "lovable-tagger";
 
-// https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
-  server: {
-    host: "::",
-    port: 8080,
-  },
-  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
+// Final config for GitHub Pages:
+// - Repo name: Ham-Portfolio
+// - Public URL: https://hamdan070905.github.io/Ham-Portfolio
+export default defineConfig({
+  plugins: [react()],
+  base: "/Ham-Portfolio/", // REQUIRED for GitHub Pages assets
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      "@": path.resolve(__dirname, "src"),
     },
   },
-}));
+});
