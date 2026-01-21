@@ -4,15 +4,23 @@ import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
 
 const navLinks = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Experience", href: "#experience" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Services", href: "#services" },
-  { name: "Certifications", href: "#certifications" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", sectionId: "home" },
+  { name: "About", sectionId: "about" },
+  { name: "Experience", sectionId: "experience" },
+  { name: "Skills", sectionId: "skills" },
+  { name: "Projects", sectionId: "projects" },
+  { name: "Services", sectionId: "services" },
+  { name: "Certifications", sectionId: "certifications" },
+  { name: "Contact", sectionId: "contact" },
 ];
+
+// Smooth scroll to section
+const scrollToSection = (sectionId: string) => {
+  const element = document.getElementById(sectionId);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+};
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,45 +34,49 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleNavClick = (sectionId: string) => {
+    scrollToSection(sectionId);
+    setIsOpen(false);
+  };
+
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-background/80 backdrop-blur-xl border-b border-border" : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-background/80 backdrop-blur-xl border-b border-border" : "bg-transparent"
+        }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <motion.a
-            href="#home"
-            className="font-display text-2xl font-bold gradient-text"
+          <motion.button
+            onClick={() => handleNavClick("home")}
+            className="font-display text-2xl font-bold gradient-text cursor-pointer bg-transparent border-none"
             whileHover={{ scale: 1.05 }}
           >
             Hamdan
             <span className="text-neon-cyan">.</span>
-          </motion.a>
+          </motion.button>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              <motion.a
+              <motion.button
                 key={link.name}
-                href={link.href}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm font-medium"
+                onClick={() => handleNavClick(link.sectionId)}
+                className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm font-medium cursor-pointer bg-transparent border-none"
                 whileHover={{ y: -2 }}
               >
                 {link.name}
-              </motion.a>
+              </motion.button>
             ))}
           </div>
 
           {/* CTA Button */}
           <div className="hidden lg:block">
-            <Button variant="heroOutline" size="default" asChild>
-              <a href="#contact">Let's Talk</a>
+            <Button variant="heroOutline" size="default" onClick={() => handleNavClick("contact")}>
+              Let's Talk
             </Button>
           </div>
 
@@ -89,20 +101,19 @@ const Navbar = () => {
           >
             <div className="px-6 py-6 space-y-4">
               {navLinks.map((link, index) => (
-                <motion.a
+                <motion.button
                   key={link.name}
-                  href={link.href}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className="block text-muted-foreground hover:text-foreground transition-colors py-2"
-                  onClick={() => setIsOpen(false)}
+                  className="block text-muted-foreground hover:text-foreground transition-colors py-2 cursor-pointer bg-transparent border-none text-left w-full"
+                  onClick={() => handleNavClick(link.sectionId)}
                 >
                   {link.name}
-                </motion.a>
+                </motion.button>
               ))}
-              <Button variant="hero" className="w-full mt-4" asChild>
-                <a href="#contact">Let's Talk</a>
+              <Button variant="hero" className="w-full mt-4" onClick={() => handleNavClick("contact")}>
+                Let's Talk
               </Button>
             </div>
           </motion.div>

@@ -5,6 +5,15 @@ import { Button } from "./ui/button";
 // Profile photo - replace with your actual photo at src/assets/profile-photo.jpg
 import profilePhoto from "../assets/profile-photo.jpg";
 
+// Smooth scroll to section
+const scrollToSection = (e: React.MouseEvent, sectionId: string) => {
+  e.preventDefault();
+  const element = document.getElementById(sectionId);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+};
+
 const HeroSection = () => {
   return (
     <section
@@ -92,13 +101,17 @@ const HeroSection = () => {
               transition={{ delay: 0.6 }}
               className="flex flex-wrap gap-4 mb-10"
             >
-              <Button variant="hero" size="lg" asChild>
-                <a href="#projects">
-                  View Projects <ArrowRight className="ml-2 h-5 w-5" />
-                </a>
+              <Button variant="hero" size="lg" onClick={() => {
+                const element = document.getElementById("projects");
+                if (element) element.scrollIntoView({ behavior: "smooth", block: "start" });
+              }}>
+                View Projects <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button variant="heroOutline" size="lg" asChild>
-                <a href="#contact">Contact Me</a>
+              <Button variant="heroOutline" size="lg" onClick={() => {
+                const element = document.getElementById("contact");
+                if (element) element.scrollIntoView({ behavior: "smooth", block: "start" });
+              }}>
+                Contact Me
               </Button>
             </motion.div>
 
