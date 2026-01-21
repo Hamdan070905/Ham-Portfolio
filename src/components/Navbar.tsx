@@ -14,6 +14,14 @@ const navLinks = [
   { name: "Contact", href: "#contact" },
 ];
 
+const scrollToSection = (hash: string) => {
+  const id = hash.replace("#", "");
+  const el = document.getElementById(id);
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth" });
+  }
+};
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -42,6 +50,10 @@ const Navbar = () => {
             href="#home"
             className="font-display text-2xl font-bold gradient-text"
             whileHover={{ scale: 1.05 }}
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection("#home");
+            }}
           >
             Hamdan
             <span className="text-neon-cyan">.</span>
@@ -55,6 +67,10 @@ const Navbar = () => {
                 href={link.href}
                 className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm font-medium"
                 whileHover={{ y: -2 }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(link.href);
+                }}
               >
                 {link.name}
               </motion.a>
@@ -63,8 +79,20 @@ const Navbar = () => {
 
           {/* CTA Button */}
           <div className="hidden lg:block">
-            <Button variant="heroOutline" size="default" asChild>
-              <a href="#contact">Let's Talk</a>
+            <Button
+              variant="heroOutline"
+              size="default"
+              asChild
+            >
+              <a
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection("#contact");
+                }}
+              >
+                Let's Talk
+              </a>
             </Button>
           </div>
 
@@ -96,13 +124,26 @@ const Navbar = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
                   className="block text-muted-foreground hover:text-foreground transition-colors py-2"
-                  onClick={() => setIsOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(link.href);
+                    setIsOpen(false);
+                  }}
                 >
                   {link.name}
                 </motion.a>
               ))}
               <Button variant="hero" className="w-full mt-4" asChild>
-                <a href="#contact">Let's Talk</a>
+                <a
+                  href="#contact"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection("#contact");
+                    setIsOpen(false);
+                  }}
+                >
+                  Let's Talk
+                </a>
               </Button>
             </div>
           </motion.div>

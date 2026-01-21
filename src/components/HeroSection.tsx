@@ -2,8 +2,19 @@ import { motion } from "framer-motion";
 import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "./ui/button";
 
-// Profile photo - replace with your actual photo at src/assets/profile-photo.jpg
+// Profile photo - safe default (placeholder in /public)
+// If you want your real photo, change this to:
+//   import profilePhoto from "@/assets/profile-photo.jpg";
+// and ensure src/assets/profile-photo.jpg actually exists.
 const profilePhoto = "/placeholder.svg";
+
+const scrollToSection = (hash: string) => {
+  const id = hash.replace("#", "");
+  const el = document.getElementById(id);
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth" });
+  }
+};
 
 const HeroSection = () => {
   return (
@@ -95,12 +106,26 @@ const HeroSection = () => {
               className="flex flex-wrap gap-4 mb-10"
             >
               <Button variant="hero" size="lg" asChild>
-                <a href="#projects">
+                <a
+                  href="#projects"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection("#projects");
+                  }}
+                >
                   View Projects <ArrowRight className="ml-2 h-5 w-5" />
                 </a>
               </Button>
               <Button variant="heroOutline" size="lg" asChild>
-                <a href="#contact">Contact Me</a>
+                <a
+                  href="#contact"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection("#contact");
+                  }}
+                >
+                  Contact Me
+                </a>
               </Button>
             </motion.div>
 

@@ -8,36 +8,42 @@ const ProjectsSection = () => {
       description: "A ChatGPT-like conversational AI system built with advanced NLP models for natural human-computer interaction.",
       icon: <Bot size={28} />,
       tags: ["NLP", "Transformers", "Python", "Streamlit"],
+      githubUrl: "", // TODO: paste GitHub repo link
     },
     {
       title: "AR-Based Cultural Heritage Preservation",
       description: "Augmented reality system for preserving and experiencing cultural heritage sites digitally.",
       icon: <Eye size={28} />,
       tags: ["Computer Vision", "AR", "Deep Learning", "3D"],
+      githubUrl: "",
     },
     {
       title: "MetaJudge: AI Chatbot Validator",
       description: "AI-powered system to validate and score chatbot responses for quality and accuracy.",
       icon: <Shield size={28} />,
       tags: ["NLP", "ML", "Quality Analysis", "Python"],
+      githubUrl: "",
     },
     {
       title: "Face Mask Detection with Live Alert",
       description: "Real-time face mask detection system with live video feed and instant alert notifications.",
       icon: <Eye size={28} />,
-      tags: ["OpenCV", "CNN", "Real-time", "Alert System"],
+      tags: ["OpenCV", "CNN", "Real-time", "Alert System"],   
+      githubUrl: "https://github.com/Hamdan070905/Face-Mask-Detection-with-Live-Alert-System",
     },
     {
       title: "Automated Document Classification",
       description: "Deep learning model for automatic categorization of documents based on content analysis.",
       icon: <FileText size={28} />,
       tags: ["Deep Learning", "NLP", "Classification", "OCR"],
+      githubUrl: "",
     },
     {
       title: "News Article Classification Engine",
       description: "ML-powered system for categorizing news articles into relevant topics using NLP techniques.",
       icon: <MessageCircle size={28} />,
       tags: ["NLP", "Machine Learning", "Text Classification"],
+      githubUrl: "",
     },
   ];
 
@@ -107,13 +113,24 @@ const ProjectsSection = () => {
 
               {/* Links */}
               <div className="flex gap-3 pt-4 border-t border-border">
-                <button
-                  type="button"
-                  aria-label="View code on GitHub"
-                  className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-border bg-secondary/20 text-muted-foreground hover:text-neon-cyan hover:border-neon-cyan/50 transition-colors"
-                >
-                  <Github size={18} />
-                </button>
+                {project.githubUrl && project.githubUrl.trim().length > 0 ? (
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`View ${project.title} code on GitHub`}
+                    className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-border bg-secondary/20 text-muted-foreground hover:text-neon-cyan hover:border-neon-cyan/50 transition-colors"
+                  >
+                    <Github size={18} />
+                  </a>
+                ) : (
+                  <span
+                    title="Add a GitHub repo URL in ProjectsSection.tsx"
+                    className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-border bg-secondary/10 text-muted-foreground/60"
+                  >
+                    <Github size={18} />
+                  </span>
+                )}
               </div>
             </motion.div>
           ))}
