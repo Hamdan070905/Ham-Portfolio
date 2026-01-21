@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { MapPin, GraduationCap, Briefcase } from "lucide-react";
 
 // Profile photo - replace with your actual photo at src/assets/profile-photo.jpg
-const profilePhoto = "/placeholder.svg";
+import profilePhoto from "../assets/profile-photo.jpg";
 
 const AboutSection = () => {
   const stats = [
@@ -58,7 +58,7 @@ const AboutSection = () => {
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
               I'm <span className="text-foreground font-semibold">Jambu Mohammed Hamdan</span>, a passionate undergraduate pursuing B.Tech in Artificial Intelligence & Data Science at B.S. Abdur Rahman Crescent Institute of Science and Technology, Chennai.
             </p>
-            
+
             <p className="text-muted-foreground mb-8 leading-relaxed">
               I have a strong foundation in machine learning, deep learning, computer vision, NLP, and AI-driven automation, with hands-on experience through internships and real-world projects. I enjoy solving complex problems and building innovative AI solutions that make a difference.
             </p>

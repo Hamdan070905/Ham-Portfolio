@@ -3,27 +3,24 @@ import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "./ui/button";
 
 // Profile photo - replace with your actual photo at src/assets/profile-photo.jpg
-const profilePhoto = "/placeholder.svg";
+import profilePhoto from "../assets/profile-photo.jpg";
 
 const HeroSection = () => {
   return (
-    <section id="home" className="min-h-screen hero-gradient relative overflow-hidden flex items-center">
+    <section
+      id="home"
+      className="min-h-screen hero-gradient relative overflow-hidden flex items-center"
+    >
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
           className="absolute top-20 right-20 w-72 h-72 bg-neon-purple/20 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
+          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
           transition={{ duration: 8, repeat: Infinity }}
         />
         <motion.div
           className="absolute bottom-20 left-20 w-96 h-96 bg-neon-cyan/10 rounded-full blur-3xl"
-          animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.2, 0.4, 0.2],
-          }}
+          animate={{ scale: [1.2, 1, 1.2], opacity: [0.2, 0.4, 0.2] }}
           transition={{ duration: 10, repeat: Infinity }}
         />
         {/* Floating circles */}
@@ -56,7 +53,7 @@ const HeroSection = () => {
             >
               Welcome to my portfolio
             </motion.p>
-            
+
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -85,7 +82,8 @@ const HeroSection = () => {
               transition={{ delay: 0.5 }}
               className="text-muted-foreground mb-8 max-w-lg"
             >
-              Passionate Artificial Intelligence & Data Science undergraduate building intelligent, real-world AI solutions.
+              Passionate Artificial Intelligence & Data Science undergraduate
+              building intelligent, real-world AI solutions.
             </motion.p>
 
             <motion.div
@@ -112,9 +110,21 @@ const HeroSection = () => {
               className="flex gap-4"
             >
               {[
-                { icon: <Linkedin size={20} />, href: "https://linkedin.com/in/mohammed-hamdan-7337ba288", label: "LinkedIn" },
-                { icon: <Github size={20} />, href: "https://github.com/Hamdan070905", label: "GitHub" },
-                { icon: <Mail size={20} />, href: "mailto:mohammedhamdanj07@gmail.com", label: "Email" },
+                {
+                  icon: <Linkedin size={20} />,
+                  href: "https://linkedin.com/in/mohammed-hamdan-7337ba288",
+                  label: "LinkedIn",
+                },
+                {
+                  icon: <Github size={20} />,
+                  href: "https://github.com/Hamdan070905",
+                  label: "GitHub",
+                },
+                {
+                  icon: <Mail size={20} />,
+                  href: "mailto:mohammedhamdanj07@gmail.com",
+                  label: "Email",
+                },
               ].map((social, index) => (
                 <motion.a
                   key={social.label}
@@ -143,7 +153,7 @@ const HeroSection = () => {
             <div className="relative">
               {/* Glow effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/30 to-neon-cyan/30 rounded-full blur-3xl scale-110" />
-              
+
               {/* Profile Image */}
               <motion.div
                 className="relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-glass-border"
@@ -165,7 +175,9 @@ const HeroSection = () => {
                 animate={{ y: [-5, 5, -5] }}
                 transition={{ duration: 3, repeat: Infinity }}
               >
-                <p className="text-sm font-medium text-neon-cyan">AI & Data Science</p>
+                <p className="text-sm font-medium text-neon-cyan">
+                  AI & Data Science
+                </p>
               </motion.div>
             </div>
           </motion.div>
