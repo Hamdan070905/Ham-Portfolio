@@ -8,7 +8,7 @@ const ProjectsSection = () => {
       description: "A ChatGPT-like conversational AI system built with advanced NLP models for natural human-computer interaction.",
       icon: <Bot size={28} />,
       tags: ["NLP", "Transformers", "Python", "Streamlit"],
-      githubUrl: "", // TODO: Add your GitHub repo URL here
+      githubUrl: "https://github.com/Hamdan070905/AI-Chatbot.git", // TODO: Add your GitHub repo URL here
     },
     {
       title: "AR-Based Cultural Heritage Preservation",
